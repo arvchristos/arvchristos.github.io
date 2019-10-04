@@ -16,30 +16,15 @@ This is the hacky code that was used for this:"><meta property=og:type content=a
 		&lt;a href=&quot;https://www.github.com/arvchristos&quot; target=&quot;_blank&quot; title=&quot;GitHub&quot;&gt;&lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;span&gt;&amp;#32;|&amp;#32;&lt;/span&gt;
 		&lt;a href=&quot;https://www.gitlab.com/arvchristos&quot; target=&quot;_blank&quot; title=&quot;GitLab&quot;&gt;&lt;i class=&quot;fab fa-gitlab&quot;&gt;&lt;/i&gt;&lt;/a&gt;   
     &lt;/h3&gt;   
-{{&lt; /rawhtml &gt;}}
+{{&lt; rawhtml &gt;}}
 </code></pre><p><em>Notice the span content. We use the special code for space character to preserve it after minification on build.</em></p><p>However, merging content with HTML is against any static generator&rsquo;s purpose. So, I decided to create a simple shortcode for this. Our goal is to use something like the following:</p><pre><code class=language-html>&lt;h3&gt;
-
-
-
-
-	<a href=mailto:arvchristos@protonmail.com target=_blank title=email><i class="fas fa-envelope"></i></a>
-
-
-
-	<span>&#32;|&#32;</span><a href=https://www.linkedin.com/in/arvchristos/ target=_blank title=LinkedIn><i class="fab fa-linkedin"></i></a>
-
-
-
-	<span>&#32;|&#32;</span><a href=https://www.facebook.com/arvchristos target=_blank title=Facebook><i class="fab fa-facebook"></i></a>
-
-
-
-	<span>&#32;|&#32;</span><a href=https://www.github.com/arvchristos target=_blank title=GitHub><i class="fab fa-github"></i></a>
-
-
-
-	<span>&#32;|&#32;</span><a href=https://www.gitlab.com/arvchristos target=_blank title=GitLab><i class="fab fa-gitlab"></i></a>
-
+{{&lt; profiles 
+	mail=&quot;mailto:arvchristos@protonmail.com&quot;
+	linkedin=&quot;https://www.linkedin.com/in/arvchristos/&quot;
+	facebook=&quot;https://www.facebook.com/arvchristos&quot;
+	github=&quot;https://www.github.com/arvchristos&quot;
+	gitlab=&quot;https://www.gitlab.com/arvchristos&quot;
+&gt;}}
 &lt;/h3&gt;
 </code></pre><p>All of the previous parameters should be optional. The following shortcode file implements the this functionality:</p><pre><code class=language-html>&lt;!-- profiles --&gt;
 
